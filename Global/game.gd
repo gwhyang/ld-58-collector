@@ -53,7 +53,7 @@ var player_assets:Dictionary={
 
 var layer_heal:int = 2
 var axe_level:int = 0
-var max_ap:int = 8
+var max_ap:int = 7
 
 var pixaxe_level:int = 0
 var heal_level:int = 0
