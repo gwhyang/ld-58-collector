@@ -15,7 +15,26 @@ enum{on_start,processing,fail}
 @export var enable:bool = true
 
 var gained_mineral:Dictionary
-var level_state:int = on_start
+var level_state:int = on_start:
+	set(v):
+		if v == level_state:
+			return
+		match level_state:
+			fail:
+				labeler.show()
+				coverer.show()
+				hider.show()
+				reminder.show()
+				message.show()
+		match v:
+			fail:
+				labeler.hide()
+				coverer.hide()
+				hider.hide()
+				reminder.hide()
+				message.hide()
+		level_state = v
+		
 var current_level:int = 0:
 	set(v):
 		if v == current_level:
@@ -27,12 +46,12 @@ var level_weights:Array = [
 	Game.white:10,
 	Game.gold:3,
 	Game.blue:0,
-	Game.red:7},{
+	Game.red:4},{
 	Game.none:30,
 	Game.white:8,
 	Game.gold:6,
 	Game.blue:0,
-	Game.red:5},{
+	Game.red:3},{
 	Game.none:27,
 	Game.white:4,
 	Game.gold:6,
@@ -50,7 +69,9 @@ var to_labe_num:int = -1
 @onready var mine: TileMapLayer = $world/mine
 @onready var coverer: TileMapLayer = $world/coverer
 @onready var message: TileMapLayer = $world/message
+@onready var reminder: TileMapLayer = $world/reminder
 @onready var hider: TileMapLayer = $world/hider
+@onready var labeler: TileMapLayer = $world/labeler
 @onready var cave_generator: Node = %cave_generator
 @onready var label_selector: Control = $UI/Label_selector
 @onready var level_label: Label = $UI/VBoxContainer/current_level
@@ -120,7 +141,13 @@ func try_dig(dug_cell:Vector2i):
 			
 		processing:
 			pass
-	
+		fail:
+			current_level = 0
+			recover()
+			level_state = on_start
+			action_points = max_ap
+			return
+		
 	if dug_cell in coverer.get_used_cells():
 		print("dig blocked")
 		return
@@ -195,13 +222,12 @@ func _input(event: InputEvent) -> void:
 		try_label()
 		
 func game_fail():
-	current_level = 0
-	recover()
-	level_state = on_start
-	action_points = max_ap
+	level_state = fail
 	for key in gained_mineral:
 		gained_mineral[key] = 0
 	notify_minernal_changed()
+	action_points=0
+	
 	
 func exit_mine():
 	for mineral in Game.player_assets:
