@@ -45,10 +45,10 @@ var current_level:int = 0:
 		level_label.text = str(v)
 var level_weights:Array = [
 	{Game.none:27,
-	Game.white:10,
+	Game.white:11,
 	Game.gold:1,
 	Game.blue:0,
-	Game.red:10},{
+	Game.red:9},{
 	Game.none:20,
 	Game.white:12,
 	Game.gold:4,
