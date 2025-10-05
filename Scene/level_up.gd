@@ -3,13 +3,13 @@ extends Control
 signal exit_upgrade
 
 const axe_upgrade:Array[Dictionary] = [
-	{"describtion":"Stronger pixaxe!",
+	{"describtion":"Cost 1 less action point when digging stone.",
 	"costs":{'iron':5,'gold':0,'diamond':0,'blood':0}
 	},
-	{"describtion":"Stronger pixaxe!",
+	{"describtion":"Cost 1 less action point when digging gold.",
 	"costs":{'iron':5,'gold':10,'diamond':0,'blood':0}
 	},
-	{"describtion":"Stronger pixaxe!",
+	{"describtion":"Cost 1 less action point when digging diamond.",
 	"costs":{'iron':10,'gold':20,'diamond':20,'blood':0}
 	},
 	]

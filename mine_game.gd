@@ -130,7 +130,6 @@ func try_dig(dug_cell:Vector2i):
 			preserved[new_entrance] = Game.trapdoor
 			cave_generator.preserved = preserved
 			
-			current_level += 1
 			if current_level<level_weights.size():
 				cave_generator.weight_pairs = level_weights[current_level]
 			else:cave_generator.weight_pairs = level_weights[level_weights.size()-1]
@@ -166,6 +165,7 @@ func try_dig(dug_cell:Vector2i):
 			recover()
 			level_state = on_start
 			action_points += Game.layer_heal
+			current_level += 1
 			return
 		
 		if type == Game.lifter:
@@ -242,7 +242,7 @@ func exit_mine():
 		gained_mineral[mineral] = 0
 	notify_minernal_changed()
 	game_exit.emit()
-	
+	current_level = 0
 	SoundManager.sfx_play("exit_mine")
 
 func new_layer():
