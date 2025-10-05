@@ -1,0 +1,158 @@
+[gd_scene load_steps=16 format=3 uid="uid://d4nr216781rpg"]
+
+[ext_resource type="Script" uid="uid://2qfonjwigtwj" path="res://Scene/element/label_selector.gd" id="1_7hmbn"]
+[ext_resource type="Script" uid="uid://p38cvjysvfwl" path="res://Scene/element/label_selector_button.gd" id="2_0x3em"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0x3em"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_w6mjl"]
+events = [SubResource("InputEventKey_0x3em")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_dlw74"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_8p1wd"]
+events = [SubResource("InputEventKey_dlw74")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_evbkx"]
+device = -1
+keycode = 53
+unicode = 53
+
+[sub_resource type="Shortcut" id="Shortcut_r5aiq"]
+events = [SubResource("InputEventKey_evbkx")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_sny0p"]
+device = -1
+keycode = 55
+unicode = 55
+
+[sub_resource type="Shortcut" id="Shortcut_snu7g"]
+events = [SubResource("InputEventKey_sny0p")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_cbkon"]
+device = -1
+keycode = 57
+unicode = 57
+
+[sub_resource type="Shortcut" id="Shortcut_bsnrk"]
+events = [SubResource("InputEventKey_cbkon")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_rv6qq"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_6ujrq"]
+device = -1
+keycode = 48
+unicode = 48
+
+[sub_resource type="Shortcut" id="Shortcut_xi0gr"]
+events = [SubResource("InputEventKey_rv6qq"), SubResource("InputEventKey_6ujrq")]
+
+[node name="Label_selector" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7hmbn")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = -98.0
+offset_top = -96.0
+offset_right = 103.0
+offset_bottom = 104.0
+columns = 3
+
+[node name="1" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+button_mask = 3
+shortcut = SubResource("Shortcut_w6mjl")
+text = "1
+"
+script = ExtResource("2_0x3em")
+num = 1
+
+[node name="2" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+button_mask = 3
+shortcut = SubResource("Shortcut_8p1wd")
+text = "2
+"
+script = ExtResource("2_0x3em")
+num = 2
+
+[node name="3" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+button_mask = 3
+shortcut = SubResource("Shortcut_r5aiq")
+text = "5
+"
+script = ExtResource("2_0x3em")
+num = 5
+
+[node name="4" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+button_mask = 3
+shortcut = SubResource("Shortcut_snu7g")
+text = "7
+"
+script = ExtResource("2_0x3em")
+num = 7
+
+[node name="5" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+button_mask = 3
+script = ExtResource("2_0x3em")
+num = -1
+
+[node name="6" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+button_mask = 3
+shortcut = SubResource("Shortcut_bsnrk")
+text = "9
+"
+script = ExtResource("2_0x3em")
+num = 9
+
+[node name="7" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+action_mode = 0
+button_mask = 3
+shortcut = SubResource("Shortcut_xi0gr")
+text = "delet
+"
+script = ExtResource("2_0x3em")
+
+[connection signal="pressed" from="GridContainer/1" to="GridContainer/1" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/2" to="GridContainer/2" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/3" to="GridContainer/3" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/4" to="GridContainer/4" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/5" to="GridContainer/5" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/6" to="GridContainer/6" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/7" to="GridContainer/7" method="_on_pressed"]

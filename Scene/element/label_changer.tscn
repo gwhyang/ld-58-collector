@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b74s2xbqguutw"]
+
+[ext_resource type="Script" uid="uid://bxkikj7jwhrck" path="res://label_changer.gd" id="1_pwpy2"]
+
+[node name="LabelChanger" type="Node"]
+script = ExtResource("1_pwpy2")

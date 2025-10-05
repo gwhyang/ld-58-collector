@@ -1,0 +1,170 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgul3vw6hjv6y"]
+
+[ext_resource type="Script" uid="uid://dor86jexprbbu" path="res://Scene/level_up.gd" id="1_rm3qy"]
+[ext_resource type="Texture2D" uid="uid://d1n0a76p0anqe" path="res://Assets/tile/Spritesheets/spritesheet_items.png" id="2_qtcer"]
+[ext_resource type="PackedScene" uid="uid://b74s2xbqguutw" path="res://Scene/element/label_changer.tscn" id="3_g637e"]
+[ext_resource type="PackedScene" uid="uid://y4trosat82ba" path="res://Scene/element/upgrate.tscn" id="4_g637e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svmks"]
+atlas = ExtResource("2_qtcer")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3hwu"]
+atlas = ExtResource("2_qtcer")
+region = Rect2(256, 768, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb007"]
+atlas = ExtResource("2_qtcer")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm1nj"]
+atlas = ExtResource("2_qtcer")
+region = Rect2(256, 384, 128, 128)
+
+[node name="LevelUp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rm3qy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23031491, 0.23031494, 0.23031494, 1)
+
+[node name="wealth" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -131.0
+offset_right = 118.0
+offset_bottom = 131.0
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="wealth"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="wealth/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_svmks")
+expand_mode = 2
+
+[node name="iron" type="Label" parent="wealth/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="LabelChanger" parent="wealth/HBoxContainer2/iron" instance=ExtResource("3_g637e")]
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="wealth"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="wealth/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_i3hwu")
+expand_mode = 2
+
+[node name="gold" type="Label" parent="wealth/HBoxContainer3"]
+layout_mode = 2
+text = "0"
+
+[node name="LabelChanger" parent="wealth/HBoxContainer3/gold" instance=ExtResource("3_g637e")]
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="wealth"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="wealth/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_xb007")
+expand_mode = 2
+
+[node name="diamond" type="Label" parent="wealth/HBoxContainer4"]
+layout_mode = 2
+text = "0"
+
+[node name="LabelChanger" parent="wealth/HBoxContainer4/diamond" instance=ExtResource("3_g637e")]
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="wealth"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="wealth/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_hm1nj")
+expand_mode = 2
+
+[node name="blood" type="Label" parent="wealth/HBoxContainer5"]
+layout_mode = 2
+text = "0"
+
+[node name="LabelChanger" parent="wealth/HBoxContainer5/blood" instance=ExtResource("3_g637e")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="axe" parent="HBoxContainer" instance=ExtResource("4_g637e")]
+layout_mode = 2
+
+[node name="heal" parent="HBoxContainer" instance=ExtResource("4_g637e")]
+layout_mode = 2
+
+[node name="health" parent="HBoxContainer" instance=ExtResource("4_g637e")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -262.0
+offset_top = 37.0
+offset_right = 262.0
+offset_bottom = 165.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 128
+text = "UPGRADE"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "CONTINUE"
+
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

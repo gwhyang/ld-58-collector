@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk0xjihoap6um"]
+
+[ext_resource type="PackedScene" uid="uid://den8ad6arg3sy" path="res://Scene/mine_game.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cgul3vw6hjv6y" path="res://Scene/level_up.tscn" id="2_h2yge"]
+
+[sub_resource type="Animation" id="Animation_0xm2m"]
+resource_name = "mine"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MineGame:enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MineGame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"initial"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_h2yge"]
+resource_name = "upgrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MineGame:enable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1bvp3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MineGame:enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bvp3"]
+_data = {
+&"RESET": SubResource("Animation_1bvp3"),
+&"mine": SubResource("Animation_0xm2m"),
+&"upgrade": SubResource("Animation_h2yge")
+}
+
+[node name="Main" type="Node"]
+
+[node name="MineGame" parent="." instance=ExtResource("1_0xm2m")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="LevelUp" parent="CanvasLayer" instance=ExtResource("2_h2yge")]
+
+[node name="game_state" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1bvp3")
+}
+autoplay = "mine"
+
+[connection signal="game_exit" from="MineGame" to="game_state" method="play" binds= [&"upgrade"]]
+[connection signal="exit_upgrade" from="CanvasLayer/LevelUp" to="game_state" method="play" binds= [&"mine"]]

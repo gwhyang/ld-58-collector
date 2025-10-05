@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ju67psul43a2"]
+
+[ext_resource type="PackedScene" uid="uid://0p7er8kt1exh" path="res://Scene/element/number_reminder.tscn" id="1_e2sm1"]
+
+[node name="Labeler" instance=ExtResource("1_e2sm1")]
+
+[node name="Label" parent="." index="0"]
+theme_override_colors/font_color = Color(0.9137255, 0.38039216, 0.627451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 60

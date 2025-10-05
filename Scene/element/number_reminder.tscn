@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://0p7er8kt1exh"]
+
+[ext_resource type="Script" uid="uid://46r7qgox3b15" path="res://Scene/element/number_hintor.gd" id="1_vwvpi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0yffm"]
+
+[node name="NumberReminder" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -1088.0005
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0yffm")
+script = ExtResource("1_vwvpi")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 20.0
+offset_right = 82.0
+offset_bottom = 108.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.22260058, 0.12508187, 0.038798667, 0.6156863)
+theme_override_colors/font_outline_color = Color(0.9394086, 0.97271746, 0.976193, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
