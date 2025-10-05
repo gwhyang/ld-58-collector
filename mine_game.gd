@@ -26,6 +26,7 @@ var level_state:int = on_start:
 				hider.show()
 				reminder.show()
 				message.show()
+				$UI/faile_label.hide()
 		match v:
 			fail:
 				labeler.hide()
@@ -33,6 +34,7 @@ var level_state:int = on_start:
 				hider.hide()
 				reminder.hide()
 				message.hide()
+				$UI/faile_label.show()
 		level_state = v
 		
 var current_level:int = 0:
@@ -89,6 +91,7 @@ func initial():
 	action_points = max_ap
 	for mineral in Game.mine_points:
 		gained_mineral[mineral] = 0
+	notify_minernal_changed()
 	
 	cave_generator.grid_size = Game.cave_size.size
 	level_state = on_start
@@ -149,6 +152,7 @@ func try_dig(dug_cell:Vector2i):
 		
 	if dug_cell in coverer.get_used_cells():
 		print("dig blocked")
+		SoundManager.sfx_play("fail_dig")
 		return
 	
 	var data:=mine.get_cell_tile_data(dug_cell)

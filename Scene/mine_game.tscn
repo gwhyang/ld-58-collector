@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://den8ad6arg3sy"]
+[gd_scene load_steps=31 format=4 uid="uid://den8ad6arg3sy"]
 
 [ext_resource type="Script" uid="uid://f0pu4gndrm7k" path="res://mine_game.gd" id="1_785tx"]
 [ext_resource type="Script" uid="uid://c1gxcfsm3l88x" path="res://Resource/cave_generator.gd" id="2_3kdw7"]
@@ -122,7 +122,7 @@ load_path = "res://.godot/imported/spritesheet_tiles.png-5e22e637d55ba26c3915a82
 atlas = SubResource("CompressedTexture2D_3kdw7")
 region = Rect2(384, 512, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sjfxa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1uhf"]
 atlas = SubResource("CompressedTexture2D_3kdw7")
 region = Rect2(128, 1152, 128, 128)
 
@@ -139,6 +139,14 @@ atlas = SubResource("CompressedTexture2D_3kdw7")
 region = Rect2(640, 640, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rtjq"]
+atlas = SubResource("CompressedTexture2D_3kdw7")
+region = Rect2(512, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2u1h"]
+atlas = SubResource("CompressedTexture2D_3kdw7")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjfxa"]
 atlas = SubResource("CompressedTexture2D_3kdw7")
 region = Rect2(512, 512, 128, 128)
 
@@ -217,6 +225,7 @@ script = ExtResource("8_pufb1")
 
 [node name="ap" type="Label" parent="UI/points/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.28235295, 1)
 theme_override_font_sizes/font_size = 64
 text = "0"
 
@@ -330,7 +339,7 @@ vertical_alignment = 1
 
 [node name="mineral_block" type="TextureRect" parent="UI/count_points/VBoxContainer2"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_sjfxa")
+texture = SubResource("AtlasTexture_d1uhf")
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="UI/count_points"]
 layout_mode = 2
@@ -389,6 +398,45 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_6rtjq")
 stretch_mode = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="UI/count_points"]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/count_points/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/count_points/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/count_points/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "back to 
+top"
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/count_points/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_e2u1h")
+stretch_mode = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI/count_points/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/count_points/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "next
+level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/count_points/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_sjfxa")
+stretch_mode = 4
+
 [node name="Label_selector" parent="UI" instance=ExtResource("9_sgoca")]
 anchors_preset = 1
 anchor_left = 1.0
@@ -414,6 +462,7 @@ grow_vertical = 0
 
 [node name="current_level" type="Label" parent="UI/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.28235295, 1)
 theme_override_font_sizes/font_size = 128
 text = "0"
 
@@ -422,5 +471,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "current
 level"
+
+[node name="faile_label" type="Label" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.5
+offset_top = -95.0
+offset_right = 254.5
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Lost all minerals!"
 
 [connection signal="selected_num" from="UI/Label_selector" to="." method="_on_label_selector_selected_num"]
