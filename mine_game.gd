@@ -44,12 +44,12 @@ var current_level:int = 0:
 var level_weights:Array = [
 	{Game.none:30,
 	Game.white:10,
-	Game.gold:3,
+	Game.gold:1,
 	Game.blue:0,
 	Game.red:4},{
 	Game.none:30,
 	Game.white:8,
-	Game.gold:6,
+	Game.gold:4,
 	Game.blue:0,
 	Game.red:3},{
 	Game.none:27,
@@ -183,10 +183,15 @@ func try_dig(dug_cell:Vector2i):
 			for j in [-1,0,1]:
 				update_cell_massage(dug_cell+Vector2i(i,j))
 		notify_minernal_changed()
+		
+		if not type == Game.none:
+			SoundManager.sfx_play("pick_mineral")
 		return
 		
 	action_points -= Game.mine_cost[type]
-		
+	
+	if type == Game.red:
+		SoundManager.play("heal")
 	if action_points < 0:
 		game_fail()
 		return
@@ -219,7 +224,8 @@ func _input(event: InputEvent) -> void:
 			to_labe_num = -1
 			return
 		to_label_cell = cell
-		try_label()
+		if try_label():
+			SoundManager.sfx_play("place_label")
 		
 func game_fail():
 	level_state = fail
@@ -232,8 +238,12 @@ func game_fail():
 func exit_mine():
 	for mineral in Game.player_assets:
 		Game.player_assets[mineral] += gained_mineral.get(mineral,0)
+	for mineral in gained_mineral:
+		gained_mineral[mineral] = 0
+	notify_minernal_changed()
 	game_exit.emit()
-	pass
+	
+	SoundManager.sfx_play("exit_mine")
 
 func new_layer():
 	var cave = cave_generator.generate_cave()

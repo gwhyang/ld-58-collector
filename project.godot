@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Game="*res://Global/game.gd"
 EventBus="*res://Global/event_bus.gd"
+SoundManager="*res://Global/sound_manager.tscn"
 
 [display]
 

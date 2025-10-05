@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c74d6d2b66ebw"
+path="res://.godot/imported/Whispering Woods.ogg-326ea6c2c24c07e28c15dc0ba27fcd1d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Whispering Woods.ogg"
+dest_files=["res://.godot/imported/Whispering Woods.ogg-326ea6c2c24c07e28c15dc0ba27fcd1d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

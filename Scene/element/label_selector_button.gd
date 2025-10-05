@@ -12,3 +12,4 @@ signal num_selected(num)
 func _on_pressed() -> void:
 	label_selector.selected_num.emit(num)
 	accept_event()
+	SoundManager.sfx_play("pick_label")

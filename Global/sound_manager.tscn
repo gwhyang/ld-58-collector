@@ -1,0 +1,86 @@
+[gd_scene load_steps=21 format=3 uid="uid://mvd4gljhikxe"]
+
+[ext_resource type="Script" uid="uid://c62obl4sivpxg" path="res://Global/sound_manger.gd" id="1_1dbh0"]
+[ext_resource type="AudioStream" uid="uid://b0ad3414eqwt2" path="res://Assets/SFX/Abstract1.ogg" id="2_h8vxm"]
+[ext_resource type="AudioStream" uid="uid://dhkxbhh7xvsl7" path="res://Assets/SFX/Abstract2.ogg" id="3_1dbh0"]
+[ext_resource type="AudioStream" uid="uid://be4pw1j6a3bsp" path="res://Assets/SFX/Modern1.ogg" id="4_1dbh0"]
+[ext_resource type="AudioStream" uid="uid://bh12npi8sq2au" path="res://Assets/SFX/Wood Block1.ogg" id="5_bqi5o"]
+[ext_resource type="AudioStream" uid="uid://c8ohtmem3y3o5" path="res://Assets/SFX/Wood Block2.ogg" id="6_m5la2"]
+[ext_resource type="AudioStream" uid="uid://4v3niebqed3y" path="res://Assets/SFX/Retro8.ogg" id="7_rffuy"]
+[ext_resource type="AudioStream" uid="uid://dc0jy3glwajh6" path="res://Assets/SFX/Retro1.ogg" id="8_awnhx"]
+[ext_resource type="AudioStream" uid="uid://e3amotbdbri8" path="res://Assets/SFX/Modern13.ogg" id="9_w4la8"]
+[ext_resource type="AudioStream" uid="uid://tpybcgynqjaq" path="res://Assets/Music/Cuddle Clouds.ogg" id="10_03xqv"]
+[ext_resource type="AudioStream" uid="uid://b2yfw2mebtmo5" path="res://Assets/Music/Drifting Memories.ogg" id="11_jfgr3"]
+[ext_resource type="AudioStream" uid="uid://jnm7xm0ptcy6" path="res://Assets/Music/Evening Harmony.ogg" id="12_ucro1"]
+[ext_resource type="AudioStream" uid="uid://btyoymqnrxro6" path="res://Assets/Music/Floating Dream.ogg" id="13_nt1px"]
+[ext_resource type="AudioStream" uid="uid://d36nrhqjvw1r5" path="res://Assets/Music/Forgotten Biomes.ogg" id="14_b1a2m"]
+[ext_resource type="AudioStream" uid="uid://qusafwmrjqh5" path="res://Assets/Music/Gentle Breeze.ogg" id="15_tk0w8"]
+[ext_resource type="AudioStream" uid="uid://c4vqb8rnqml63" path="res://Assets/Music/Golden Gleam.ogg" id="16_srppt"]
+[ext_resource type="AudioStream" uid="uid://tp0y6tkng5ex" path="res://Assets/Music/Polar Lights.ogg" id="17_ctw7p"]
+[ext_resource type="AudioStream" uid="uid://cwal58uf0cuij" path="res://Assets/Music/Sunlight Through Leaves.ogg" id="18_iq4bu"]
+[ext_resource type="AudioStream" uid="uid://djuh4npwabql2" path="res://Assets/Music/Wanderers Tale.ogg" id="19_xwysk"]
+[ext_resource type="AudioStream" uid="uid://c74d6d2b66ebw" path="res://Assets/Music/Whispering Woods.ogg" id="20_uh3co"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_1dbh0")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="pick_label" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_h8vxm")
+
+[node name="place_label" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_1dbh0")
+
+[node name="pick_mineral" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_1dbh0")
+
+[node name="exit_mine" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_bqi5o")
+
+[node name="exit_upgrade" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_m5la2")
+
+[node name="upgrade" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_rffuy")
+
+[node name="fail_up" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_awnhx")
+
+[node name="heal" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_w4la8")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="CuddleClouds" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("10_03xqv")
+
+[node name="DriftingMemories" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("11_jfgr3")
+
+[node name="EveningHarmony" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("12_ucro1")
+
+[node name="FloatingDream" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("13_nt1px")
+
+[node name="ForgottenBiomes" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("14_b1a2m")
+
+[node name="GentleBreeze" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("15_tk0w8")
+
+[node name="GoldenGleam" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("16_srppt")
+
+[node name="PolarLights" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("17_ctw7p")
+
+[node name="SunlightThroughLeaves" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("18_iq4bu")
+
+[node name="WanderersTale" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("19_xwysk")
+
+[node name="WhisperingWoods" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("20_uh3co")

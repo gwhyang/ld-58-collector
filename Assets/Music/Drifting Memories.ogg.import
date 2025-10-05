@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b2yfw2mebtmo5"
+path="res://.godot/imported/Drifting Memories.ogg-6ddc29af0f0d293c993691be14a1f660.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Drifting Memories.ogg"
+dest_files=["res://.godot/imported/Drifting Memories.ogg-6ddc29af0f0d293c993691be14a1f660.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

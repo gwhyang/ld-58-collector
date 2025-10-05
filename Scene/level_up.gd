@@ -118,12 +118,15 @@ func try_cost(cost:Dictionary) -> bool:
 	for key in Game.player_assets:
 		result[key] -= cost[Game.mineral_names[key]]
 		if result[key] <0:
+			SoundManager.sfx_play("fail_up")
 			return false
 	
 	Game.player_assets = result
 	update_wealth()
+	SoundManager.sfx_play("upgrade")
 	return true
 
 
 func _on_exit_pressed() -> void:
 	exit_upgrade.emit()
+	SoundManager.sfx_play("exit_upgrade")
