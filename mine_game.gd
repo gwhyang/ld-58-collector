@@ -42,25 +42,25 @@ var current_level:int = 0:
 		current_level = v
 		level_label.text = str(v)
 var level_weights:Array = [
-	{Game.none:30,
+	{Game.none:27,
 	Game.white:10,
 	Game.gold:1,
 	Game.blue:0,
-	Game.red:4},{
-	Game.none:30,
-	Game.white:8,
+	Game.red:10},{
+	Game.none:20,
+	Game.white:12,
 	Game.gold:4,
 	Game.blue:0,
-	Game.red:3},{
-	Game.none:27,
-	Game.white:4,
-	Game.gold:6,
+	Game.red:5},{
+	Game.none:20,
+	Game.white:10,
+	Game.gold:14,
 	Game.blue:1,
 	Game.red:4},{
-	Game.none:27,
+	Game.none:16,
 	Game.white:2,
-	Game.gold:4,
-	Game.blue:3,
+	Game.gold:16,
+	Game.blue:4,
 	Game.red:4}
 ]
 var to_label_cell:Vector2i = -Vector2i.ONE
@@ -191,7 +191,7 @@ func try_dig(dug_cell:Vector2i):
 	action_points -= Game.mine_cost[type]
 	
 	if type == Game.red:
-		SoundManager.play("heal")
+		SoundManager.sfx_play("heal")
 	if action_points < 0:
 		game_fail()
 		return
