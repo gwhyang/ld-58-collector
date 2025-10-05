@@ -26,7 +26,6 @@ window/stretch/mode="viewport"
 
 [gui]
 
-theme/default_font_multichannel_signed_distance_field=true
 theme/custom_font="uid://c8aejbpje1y2o"
 
 [input]
