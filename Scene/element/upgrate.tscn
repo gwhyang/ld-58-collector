@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://y4trosat82ba"]
+[gd_scene load_steps=9 format=3 uid="uid://y4trosat82ba"]
 
 [ext_resource type="Script" uid="uid://0duaaw6v88qn" path="res://upgrate.gd" id="1_gtv17"]
 [ext_resource type="Texture2D" uid="uid://d1n0a76p0anqe" path="res://Assets/tile/Spritesheets/spritesheet_items.png" id="2_o3x4f"]
@@ -19,9 +19,17 @@ region = Rect2(384, 0, 128, 128)
 atlas = ExtResource("2_o3x4f")
 region = Rect2(256, 384, 128, 128)
 
+[sub_resource type="Gradient" id="Gradient_gtv17"]
+offsets = PackedFloat32Array(0, 0.24342105, 0.57894737, 1)
+colors = PackedColorArray(0.98039216, 0.98039216, 0.98039216, 0, 1, 1, 1, 1, 0.93840575, 0.93840575, 0.93840575, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o3x4f"]
+gradient = SubResource("Gradient_gtv17")
+fill_from = Vector2(1, 1)
+
 [node name="Upgrate" type="PanelContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 268.0
+offset_bottom = 196.0
 script = ExtResource("1_gtv17")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -108,5 +116,12 @@ custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Upgrade"
+
+[node name="cover" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("GradientTexture2D_o3x4f")
+
+[node name="up_ani" type="AnimationPlayer" parent="."]
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

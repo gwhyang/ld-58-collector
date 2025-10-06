@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgul3vw6hjv6y"]
+[gd_scene load_steps=11 format=3 uid="uid://cgul3vw6hjv6y"]
 
 [ext_resource type="Script" uid="uid://dor86jexprbbu" path="res://Scene/level_up.gd" id="1_rm3qy"]
 [ext_resource type="Texture2D" uid="uid://d1n0a76p0anqe" path="res://Assets/tile/Spritesheets/spritesheet_items.png" id="2_qtcer"]
 [ext_resource type="PackedScene" uid="uid://b74s2xbqguutw" path="res://Scene/element/label_changer.tscn" id="3_g637e"]
 [ext_resource type="PackedScene" uid="uid://y4trosat82ba" path="res://Scene/element/upgrate.tscn" id="4_g637e"]
+[ext_resource type="Texture2D" uid="uid://cw638vbrptw3j" path="res://Assets/tile/Spritesheets/spritesheet_tiles.png" id="5_svmks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_svmks"]
 atlas = ExtResource("2_qtcer")
@@ -20,6 +21,11 @@ region = Rect2(384, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm1nj"]
 atlas = ExtResource("2_qtcer")
 region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhjib"]
+atlas = ExtResource("5_svmks")
+region = Rect2(896, 32, 128, 96)
+margin = Rect2(0, 4, 4, 4)
 
 [node name="LevelUp" type="Control"]
 layout_mode = 3
@@ -167,5 +173,13 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "CONTINUE"
+icon = SubResource("AtlasTexture_xhjib")
+alignment = 0
+icon_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

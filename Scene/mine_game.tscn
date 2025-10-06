@@ -152,6 +152,12 @@ region = Rect2(512, 512, 128, 128)
 
 [node name="MineGame" type="Node"]
 script = ExtResource("1_785tx")
+mine_icons = {
+1: NodePath("UI/white_exp"),
+3: NodePath("UI/gold_exp"),
+4: NodePath("UI/blue_exp"),
+6: NodePath("UI/red_exp")
+}
 
 [node name="cave_generator" type="Node" parent="."]
 unique_name_in_owner = true
@@ -493,5 +499,37 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "Lost all minerals!"
+
+[node name="white_exp" type="TextureRect" parent="UI"]
+offset_left = 1668.9999
+offset_top = 319.0
+offset_right = 1796.9999
+offset_bottom = 447.0
+scale = Vector2(0.655, 0.655)
+texture = SubResource("AtlasTexture_qit1u")
+
+[node name="gold_exp" type="TextureRect" parent="UI"]
+offset_left = 1668.9999
+offset_top = 319.0
+offset_right = 1796.9999
+offset_bottom = 447.0
+scale = Vector2(0.655, 0.655)
+texture = SubResource("AtlasTexture_sgoca")
+
+[node name="blue_exp" type="TextureRect" parent="UI"]
+offset_left = 1668.9999
+offset_top = 319.0
+offset_right = 1796.9999
+offset_bottom = 447.0
+scale = Vector2(0.655, 0.655)
+texture = SubResource("AtlasTexture_pufb1")
+
+[node name="red_exp" type="TextureRect" parent="UI"]
+offset_left = 1673.9999
+offset_top = 331.0
+offset_right = 1801.9999
+offset_bottom = 459.0
+scale = Vector2(0.655, 0.655)
+texture = SubResource("AtlasTexture_hdmc4")
 
 [connection signal="selected_num" from="UI/Label_selector" to="." method="_on_label_selector_selected_num"]

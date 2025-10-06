@@ -124,7 +124,7 @@ _data = {
 [node name="MineGame" parent="." instance=ExtResource("1_0xm2m")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 5
 visible = false
 
 [node name="LevelUp" parent="CanvasLayer" instance=ExtResource("2_h2yge")]
@@ -133,7 +133,7 @@ visible = false
 libraries = {
 &"": SubResource("AnimationLibrary_1bvp3")
 }
-autoplay = "mine"
+autoplay = "upgrade"
 
 [connection signal="game_exit" from="MineGame" to="game_state" method="play" binds= [&"upgrade"]]
 [connection signal="exit_upgrade" from="CanvasLayer/LevelUp" to="game_state" method="play" binds= [&"mine"]]

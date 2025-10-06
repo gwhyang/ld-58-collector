@@ -1,6 +1,7 @@
 extends Node
 
 enum {none,white,black,gold,blue,brown,red,trapdoor,lifter,cover,hide}
+const move_interval:float = 0.5
 const cave_size:Rect2i = Rect2i(Vector2i.ZERO,Vector2i(12,10))
 const mineral_names:Dictionary={
 	none:"stone",

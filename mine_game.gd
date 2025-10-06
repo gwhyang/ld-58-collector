@@ -13,6 +13,7 @@ enum{on_start,processing,fail}
 		
 		EventBus.change_label("ap",str(action_points)+"/"+str(max_ap))
 @export var enable:bool = true
+@export var mine_icons:Dictionary = {Game.white:NodePath(),Game.gold:NodePath(),Game.blue:NodePath(),Game.red:NodePath()}
 
 var gained_mineral:Dictionary
 var level_state:int = on_start:
@@ -65,8 +66,10 @@ var level_weights:Array = [
 	Game.blue:4,
 	Game.red:4}
 ]
+
 var to_label_cell:Vector2i = -Vector2i.ONE
 var to_labe_num:int = -1
+var mine_ui_posi:Dictionary={}
 
 @onready var mine: TileMapLayer = $world/mine
 @onready var coverer: TileMapLayer = $world/coverer
@@ -77,14 +80,19 @@ var to_labe_num:int = -1
 @onready var cave_generator: Node = %cave_generator
 @onready var label_selector: Control = $UI/Label_selector
 @onready var level_label: Label = $UI/VBoxContainer/current_level
+@onready var ui: CanvasLayer = $UI
 
 signal change_hint(cell:Vector2i,num:int)
 signal change_reminder(cell:Vector2i,num:int)
 signal change_label(cell:Vector2i,num:int)
 signal game_exit
 
+var points:Array[Vector2]
+
 func _ready() -> void:
 	initial()
+	await get_tree().process_frame
+	update_ui_posi()
 
 func initial():
 	max_ap = Game.max_ap
@@ -100,7 +108,6 @@ func initial():
 func mouse_dig(mouse_posi:Vector2):
 	var dug_cell := mine.local_to_map(mine.to_local(mouse_posi))
 	try_dig(dug_cell)
-	
 
 func try_dig(dug_cell:Vector2i):
 	match level_state:
@@ -186,7 +193,7 @@ func try_dig(dug_cell:Vector2i):
 		for i in [-1,0,1]:
 			for j in [-1,0,1]:
 				update_cell_massage(dug_cell+Vector2i(i,j))
-		notify_minernal_changed()
+		pick_ani_and_notify(type,get_viewport().get_mouse_position())
 		
 		if not type == Game.none:
 			SoundManager.sfx_play("pick_mineral")
@@ -237,8 +244,7 @@ func game_fail():
 		gained_mineral[key] = 0
 	notify_minernal_changed()
 	action_points=0
-	
-	
+
 func exit_mine():
 	for mineral in Game.player_assets:
 		Game.player_assets[mineral] += gained_mineral.get(mineral,0)
@@ -289,7 +295,6 @@ func try_label() -> bool:
 		return true
 	return false
 	
-
 func hint_change(cell:Vector2i,num:int):
 	change_hint.emit(cell,num)
 
@@ -299,7 +304,46 @@ func reminder_change(cell:Vector2i,num:int):
 func label_change(cell:Vector2i,num:int):
 	change_label.emit(cell,num)
 
+func update_ui_posi():
+	var name2posi:Dictionary
+	for child_container in $UI/points/VBoxContainer.get_children():
+		var label = child_container.get_child(1) as Label
+		var icon = child_container.get_child(0) as TextureRect
+		name2posi[label.name] = icon.global_position + (icon.size/2.0)*icon.scale
 
+	for type in Game.mineral_names:
+		var posi = name2posi.get(Game.mineral_names[type],null)
+		if not posi:
+			continue
+		mine_ui_posi[type] = posi
+	print("updated ui position dict:",mine_ui_posi)
+
+func pick_ani_and_notify(mine_type:int,from_posi:Vector2):
+	var icon_path = mine_icons.get(mine_type)
+	if not icon_path:
+		return
+	var posi = mine_ui_posi.get(mine_type)
+	if not posi:
+		return
+	
+	var mover = get_node(icon_path).duplicate() as Control
+	
+	mover.z_index += 2
+	mover.position = from_posi - mover.scale*(mover.size/2.0)
+	ui.add_child(mover)
+	
+	var target_scale :Vector2= mover.scale * 0.6
+	posi -= (mover.size/2.0)*target_scale
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(mover,"position",posi,Game.move_interval)
+	tween.parallel().tween_property(mover,"scale",target_scale,Game.move_interval)
+	tween.tween_callback(func():
+		mover.queue_free()
+		notify_minernal_changed()
+		)
+	
 func _on_label_selector_selected_num(num: int) -> void:
 	if num == -1:
 		to_label_cell = -Vector2i.ONE
