@@ -6,6 +6,7 @@
 
 ## About **Mineral Sweeper**
 **Mineral Sweeper** is a game collecting mineral and upgrade you mining kits.
+
 I learned this variant of minesweeper from https://danielben.itch.io/dragonsweeper.
 ---
 
