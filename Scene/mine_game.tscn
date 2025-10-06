@@ -532,4 +532,5 @@ offset_bottom = 459.0
 scale = Vector2(0.655, 0.655)
 texture = SubResource("AtlasTexture_hdmc4")
 
+[connection signal="game_enter" from="." to="UI/points/HBoxContainer/TextureRect/axe_level" method="update_icon"]
 [connection signal="selected_num" from="UI/Label_selector" to="." method="_on_label_selector_selected_num"]

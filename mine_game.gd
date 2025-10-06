@@ -86,6 +86,7 @@ signal change_hint(cell:Vector2i,num:int)
 signal change_reminder(cell:Vector2i,num:int)
 signal change_label(cell:Vector2i,num:int)
 signal game_exit
+signal game_enter
 
 var points:Array[Vector2]
 
@@ -95,11 +96,14 @@ func _ready() -> void:
 	update_ui_posi()
 
 func initial():
+	game_enter.emit()
+	
 	max_ap = Game.max_ap
 	action_points = max_ap
 	for mineral in Game.mine_points:
 		gained_mineral[mineral] = 0
 	notify_minernal_changed()
+	
 	
 	cave_generator.grid_size = Game.cave_size.size
 	level_state = on_start
