@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://den8ad6arg3sy"]
+[gd_scene load_steps=36 format=4 uid="uid://den8ad6arg3sy"]
 
 [ext_resource type="Script" uid="uid://f0pu4gndrm7k" path="res://mine_game.gd" id="1_785tx"]
 [ext_resource type="Script" uid="uid://c1gxcfsm3l88x" path="res://Resource/cave_generator.gd" id="2_3kdw7"]
@@ -10,6 +10,11 @@
 [ext_resource type="Script" uid="uid://c123kd4c1kxrn" path="res://Scene/labeler.gd" id="6_qit1u"]
 [ext_resource type="Script" uid="uid://dkaxiihqu8lao" path="res://Scene/axe_level.gd" id="8_pufb1"]
 [ext_resource type="PackedScene" uid="uid://d4nr216781rpg" path="res://Scene/element/label_selector.tscn" id="9_sgoca"]
+[ext_resource type="Texture2D" uid="uid://cqpyo32gi36da" path="res://Assets/helper/1.png" id="11_jsw7y"]
+[ext_resource type="Texture2D" uid="uid://ccjqmxjvaerua" path="res://Assets/helper/2.png" id="12_pehm8"]
+[ext_resource type="Texture2D" uid="uid://bstbcv4t1byey" path="res://Assets/helper/3.png" id="13_6rtjq"]
+[ext_resource type="Texture2D" uid="uid://c22t84rvarclb" path="res://Assets/helper/4.png" id="14_tp55l"]
+[ext_resource type="Texture2D" uid="uid://cr51rol4w8cuy" path="res://Assets/helper/5.png" id="15_e2u1h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tp55l"]
 atlas = ExtResource("4_ol221")
@@ -532,5 +537,73 @@ offset_bottom = 459.0
 scale = Vector2(0.655, 0.655)
 texture = SubResource("AtlasTexture_hdmc4")
 
+[node name="PopupPanel" type="PopupPanel" parent="UI"]
+oversampling_override = 1.0
+title = "Help"
+position = Vector2i(288, 162)
+size = Vector2i(592, 324)
+visible = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 588.0
+offset_bottom = 320.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/PopupPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("11_jsw7y")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="UI/PopupPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_pehm8")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="UI/PopupPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("13_6rtjq")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="UI/PopupPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("14_tp55l")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="UI/PopupPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("15_e2u1h")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="help" type="Button" parent="UI"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = 42.0
+offset_right = 163.0
+offset_bottom = 114.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Help"
+
 [connection signal="game_enter" from="." to="UI/points/HBoxContainer/TextureRect/axe_level" method="update_icon"]
 [connection signal="selected_num" from="UI/Label_selector" to="." method="_on_label_selector_selected_num"]
+[connection signal="popup_hide" from="UI/PopupPanel" to="UI/help" method="show"]
+[connection signal="pressed" from="UI/help" to="UI/PopupPanel" method="show"]
+[connection signal="pressed" from="UI/help" to="UI/help" method="hide"]
