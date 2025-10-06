@@ -7,20 +7,33 @@
 ## About **Mineral Sweeper**
 **Mineral Sweeper** is a game collecting mineral and upgrade you mining kits.
 
-I learned this variant of minesweeper from https://danielben.itch.io/dragonsweeper.
+I learned this variant of minesweeper from [dragonsweeper](https://danielben.itch.io/dragonsweeper).
+
 ---
 
-## How to play
-When mining, you’ll cost action points on left-top of the screen. If it is lower than 0, you’ll lose all minerals gained during mining. You can point the ladder to save your minerals, and buy upgrade.
+## How to Play
+1. **Cotrol**
 
-The number on a mineral shows its points and the number on a blank cell shows the sum of points form its 3x3 nearing cells. Just like the minesweeper.
+    Use LEFTKEY of mouse to dig and pick.
 
-The deeper, the rarer mineral appears.
+    Use RIGHTKEY or numberkey to pick numbers, then RIGHTKEY to label cell.
+2. **Action Points**
+
+    When mining, you’ll cost action points on left-top of the screen. If it is lower than 0, you’ll lose all minerals gained during mining. You can point the ladder to save your minerals, and buy upgrade.
+3. **Number**
+
+    The number on a mineral shows its points and the number on a blank cell shows the sum of points form its 3x3 nearing cells. Just like the minesweeper.
+4. **Level**
+    
+    The deeper, the rarer mineral appears.
 
 ---
 
 ## Assets
+
 Used tile: https://kenney.nl/assets/voxel-pack
+
 Sound Effects: https://cyrex-studios.itch.io/universal-ui-soundpack
+
 Music: https://pizzadoggy.itch.io/cozy-tunes
 
