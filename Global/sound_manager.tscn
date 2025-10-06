@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://mvd4gljhikxe"]
+[gd_scene load_steps=23 format=3 uid="uid://mvd4gljhikxe"]
 
 [ext_resource type="Script" uid="uid://c62obl4sivpxg" path="res://Global/sound_manger.gd" id="1_1dbh0"]
 [ext_resource type="AudioStream" uid="uid://b0ad3414eqwt2" path="res://Assets/SFX/Abstract1.ogg" id="2_h8vxm"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://tpybcgynqjaq" path="res://Assets/Music/Cuddle Clouds.ogg" id="10_03xqv"]
 [ext_resource type="AudioStream" uid="uid://dqcfskqt4et3u" path="res://Assets/SFX/Minimalist8.ogg" id="10_jfgr3"]
 [ext_resource type="AudioStream" uid="uid://b2yfw2mebtmo5" path="res://Assets/Music/Drifting Memories.ogg" id="11_jfgr3"]
+[ext_resource type="AudioStream" uid="uid://dsvrfpwcr2ar7" path="res://Assets/SFX/African4.ogg" id="11_ucro1"]
 [ext_resource type="AudioStream" uid="uid://jnm7xm0ptcy6" path="res://Assets/Music/Evening Harmony.ogg" id="12_ucro1"]
 [ext_resource type="AudioStream" uid="uid://btyoymqnrxro6" path="res://Assets/Music/Floating Dream.ogg" id="13_nt1px"]
 [ext_resource type="AudioStream" uid="uid://d36nrhqjvw1r5" path="res://Assets/Music/Forgotten Biomes.ogg" id="14_b1a2m"]
@@ -53,6 +54,9 @@ stream = ExtResource("9_w4la8")
 
 [node name="fail_dig" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("10_jfgr3")
+
+[node name="fail" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_ucro1")
 
 [node name="Music" type="Node" parent="."]
 

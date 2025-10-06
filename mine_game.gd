@@ -81,6 +81,7 @@ var mine_ui_posi:Dictionary={}
 @onready var label_selector: Control = $UI/Label_selector
 @onready var level_label: Label = $UI/VBoxContainer/current_level
 @onready var ui: CanvasLayer = $UI
+@onready var fail_particle: GPUParticles2D = $UI/fail_particle
 
 signal change_hint(cell:Vector2i,num:int)
 signal change_reminder(cell:Vector2i,num:int)
@@ -243,7 +244,9 @@ func _input(event: InputEvent) -> void:
 			SoundManager.sfx_play("place_label")
 		
 func game_fail():
+	SoundManager.sfx_play("fail")
 	level_state = fail
+	fail_particle.restart()
 	for key in gained_mineral:
 		gained_mineral[key] = 0
 	notify_minernal_changed()

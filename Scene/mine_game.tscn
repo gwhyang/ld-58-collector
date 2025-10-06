@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://den8ad6arg3sy"]
+[gd_scene load_steps=38 format=4 uid="uid://den8ad6arg3sy"]
 
 [ext_resource type="Script" uid="uid://f0pu4gndrm7k" path="res://mine_game.gd" id="1_785tx"]
 [ext_resource type="Script" uid="uid://c1gxcfsm3l88x" path="res://Resource/cave_generator.gd" id="2_3kdw7"]
@@ -154,6 +154,28 @@ region = Rect2(896, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjfxa"]
 atlas = SubResource("CompressedTexture2D_3kdw7")
 region = Rect2(512, 512, 128, 128)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jsw7y"]
+viewport_path = NodePath("UI/fail_particle/SubViewport")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pehm8"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(576, 0, 1)
+angle_min = -16.099989
+angle_max = 198.80002
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 111.939995
+initial_velocity_max = 212.69
+gravity = Vector3(0, 200, 0)
+scale_min = 0.5
+color = Color(1, 0.22352941, 0.29803923, 1)
+hue_variation_min = -0.09000002
+hue_variation_max = 0.26999998
+turbulence_noise_strength = 8.36
+turbulence_noise_scale = 10.0
+turbulence_noise_speed = Vector3(0, 400, 0)
 
 [node name="MineGame" type="Node"]
 script = ExtResource("1_785tx")
@@ -315,144 +337,6 @@ text = "0"
 
 [node name="LabelChanger" parent="UI/points/VBoxContainer/HBoxContainer5/blood" instance=ExtResource("5_3kdw7")]
 
-[node name="count_points" type="HBoxContainer" parent="UI"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = -128.0
-offset_right = 900.0
-offset_bottom = 104.0
-grow_vertical = 0
-scale = Vector2(0.44, 0.44)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/count_points"]
-layout_mode = 2
-
-[node name="mineral_point" type="Label" parent="UI/count_points/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="mineral_block" type="TextureRect" parent="UI/count_points/VBoxContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_1i1mv")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/count_points"]
-layout_mode = 2
-
-[node name="mineral_point" type="Label" parent="UI/count_points/VBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="mineral_block" type="TextureRect" parent="UI/count_points/VBoxContainer2"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_d1uhf")
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="UI/count_points"]
-layout_mode = 2
-
-[node name="mineral_point" type="Label" parent="UI/count_points/VBoxContainer3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "7"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="mineral_block" type="TextureRect" parent="UI/count_points/VBoxContainer3"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_i0h4u")
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="UI/count_points"]
-layout_mode = 2
-
-[node name="mineral_point" type="Label" parent="UI/count_points/VBoxContainer4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "9"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="mineral_block" type="TextureRect" parent="UI/count_points/VBoxContainer4"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_jsw7y")
-
-[node name="VBoxContainer5" type="VBoxContainer" parent="UI/count_points"]
-layout_mode = 2
-
-[node name="mineral_point" type="Label" parent="UI/count_points/VBoxContainer5"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "5"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="mineral_block" type="TextureRect" parent="UI/count_points/VBoxContainer5"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_pehm8")
-
-[node name="VBoxContainer6" type="VBoxContainer" parent="UI/count_points"]
-layout_mode = 2
-
-[node name="mineral_point" type="Label" parent="UI/count_points/VBoxContainer6"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="mineral_block" type="TextureRect" parent="UI/count_points/VBoxContainer6"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_6rtjq")
-stretch_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/count_points"]
-layout_mode = 2
-theme_override_constants/margin_left = 128
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/count_points/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/count_points/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="mineral_point" type="Label" parent="UI/count_points/MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "back to 
-top"
-vertical_alignment = 1
-
-[node name="mineral_block" type="TextureRect" parent="UI/count_points/MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_e2u1h")
-stretch_mode = 4
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="UI/count_points/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="mineral_point" type="Label" parent="UI/count_points/MarginContainer/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "next
-level"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="mineral_block" type="TextureRect" parent="UI/count_points/MarginContainer/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_sjfxa")
-stretch_mode = 4
-
 [node name="Label_selector" parent="UI" instance=ExtResource("9_sgoca")]
 anchors_preset = 1
 anchor_left = 1.0
@@ -470,9 +354,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -258.0
-offset_top = -285.0
+offset_top = -276.0
 offset_right = -43.0
-offset_bottom = -22.0
+offset_bottom = -13.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -487,23 +371,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "current
 level"
-
-[node name="faile_label" type="Label" parent="UI"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -254.5
-offset_top = -95.0
-offset_right = 254.5
-offset_bottom = -31.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-text = "Lost all minerals!"
 
 [node name="white_exp" type="TextureRect" parent="UI"]
 offset_left = 1668.9999
@@ -537,12 +404,208 @@ offset_bottom = 459.0
 scale = Vector2(0.655, 0.655)
 texture = SubResource("AtlasTexture_hdmc4")
 
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+offset_left = 28.0
+offset_top = 518.0
+offset_right = 1396.0
+offset_bottom = 782.0
+scale = Vector2(0.44, 0.44)
+
+[node name="Panel" type="Panel" parent="UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="count_points" type="HBoxContainer" parent="UI/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1i1mv")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_d1uhf")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer3"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_i0h4u")
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer4"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jsw7y")
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer5"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_pehm8")
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/MarginContainer/MarginContainer/count_points/VBoxContainer6"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6rtjq")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/MarginContainer/count_points"]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/MarginContainer/MarginContainer/count_points/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "back to 
+top"
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/MarginContainer/MarginContainer/count_points/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_e2u1h")
+stretch_mode = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI/MarginContainer/MarginContainer/count_points/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="mineral_point" type="Label" parent="UI/MarginContainer/MarginContainer/count_points/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "next
+level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mineral_block" type="TextureRect" parent="UI/MarginContainer/MarginContainer/count_points/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_sjfxa")
+stretch_mode = 4
+
+[node name="fail_particle" type="GPUParticles2D" parent="UI"]
+position = Vector2(576, -8)
+emitting = false
+amount = 64
+texture = SubResource("ViewportTexture_jsw7y")
+lifetime = 15.0
+one_shot = true
+explosiveness = 0.97
+process_material = SubResource("ParticleProcessMaterial_pehm8")
+
+[node name="SubViewport" type="SubViewport" parent="UI/fail_particle"]
+transparent_bg = true
+size = Vector2i(64, 64)
+
+[node name="Label" type="Label" parent="UI/fail_particle/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="faile_label" type="Label" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.50003
+offset_top = -95.0
+offset_right = 254.5
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Lost all minerals!"
+
 [node name="PopupPanel" type="PopupPanel" parent="UI"]
 oversampling_override = 1.0
 title = "Help"
 position = Vector2i(288, 162)
 size = Vector2i(592, 324)
-visible = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/PopupPanel"]
 offset_left = 4.0
@@ -591,14 +654,10 @@ expand_mode = 4
 stretch_mode = 4
 
 [node name="help" type="Button" parent="UI"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
 offset_left = 28.0
-offset_top = 42.0
+offset_top = 370.0
 offset_right = 163.0
-offset_bottom = 114.0
-grow_vertical = 2
+offset_bottom = 442.0
 theme_override_font_sizes/font_size = 64
 text = "Help"
 
