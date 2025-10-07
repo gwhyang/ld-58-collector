@@ -129,6 +129,23 @@ visible = false
 
 [node name="LevelUp" parent="CanvasLayer" instance=ExtResource("2_h2yge")]
 
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -315.0
+offset_top = -104.0
+offset_right = -21.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Tip:
+Red mineral doesn't cost digging, but heals action points when picked."
+autowrap_mode = 3
+
 [node name="game_state" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1bvp3")
