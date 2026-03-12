@@ -3,44 +3,44 @@ extends Control
 signal exit_upgrade
 
 const axe_upgrade:Array[Dictionary] = [
-	{"describtion":"Cost 1 less action point when digging stone.",
+	{"description":"Cost 1 less action point when digging stone.",
 	"costs":{'iron':5,'gold':0,'diamond':0,'blood':0}
 	},
-	{"describtion":"Cost 1 less action point when digging gold.",
+	{"description":"Cost 1 less action point when digging gold.",
 	"costs":{'iron':5,'gold':10,'diamond':0,'blood':0}
 	},
-	{"describtion":"Cost 1 less action point when digging diamond.",
+	{"description":"Cost 1 less action point when digging diamond.",
 	"costs":{'iron':10,'gold':20,'diamond':20,'blood':0}
 	},
 	]
 const heal_upgrade:Array[Dictionary] = [
-	{"describtion":"Heals 1 more when downstairs",
+	{"description":"Heals 1 more when downstairs",
 	"costs":{'iron':0,'gold':0,'diamond':0,'blood':10}
 	},
-	{"describtion":"Heals 1 more when downstairs",
+	{"description":"Heals 1 more when downstairs",
 	"costs":{'iron':0,'gold':0,'diamond':5,'blood':30}
 	},
-	{"describtion":"Heals 1 more when downstairs",
+	{"description":"Heals 1 more when downstairs",
 	"costs":{'iron':0,'gold':0,'diamond':10,'blood':60}
 	},
-	{"describtion":"Heals 1 more when downstairs",
+	{"description":"Heals 1 more when downstairs",
 	"costs":{'iron':0,'gold':0,'diamond':15,'blood':80}
 	},
-	{"describtion":"Heals 1 more when downstairs",
+	{"description":"Heals 1 more when downstairs",
 	"costs":{'iron':0,'gold':0,'diamond':20,'blood':80}
 	},
 	]
 const health_upgrade:Array[Dictionary] = [
-	{"describtion":"1 more max action points per run",
+	{"description":"1 more max action points per run",
 	"costs":{'iron':5,'gold':0,'diamond':0,'blood':5}
 	},
-	{"describtion":"More max action points per run",
+	{"description":"More max action points per run",
 	"costs":{'iron':20,'gold':5,'diamond':0,'blood':5}
 	},
-	{"describtion":"More max action points per run",
+	{"description":"More max action points per run",
 	"costs":{'iron':40,'gold':12,'diamond':0,'blood':5}
 	},
-	{"describtion":"More max action points per run",
+	{"description":"More max action points per run",
 	"costs":{'iron':60,'gold':20,'diamond':0,'blood':5}
 	},
 	]
@@ -72,11 +72,11 @@ func try_up_heal():
 		else: heal.analyze(heal_upgrade[Game.heal_level])
 	
 func try_up_axe():
-	
+
 	if Game.axe_level >= axe_upgrade.size():
 		return
 	if try_cost(axe_upgrade[Game.axe_level]["costs"]):
-		add_pixaxe()
+		add_pickaxe()
 		Game.axe_level +=1
 		if Game.axe_level >= axe_upgrade.size():
 			axe.hide()
@@ -96,14 +96,14 @@ func add_heal():
 	Game.layer_heal += 1
 	
 
-func add_pixaxe():
+func add_pickaxe():
 	match Game.axe_level:
 		0:
-			Game.mine_cost[Game.none] -= 1
+			Game.mine_cost[Game.MineralType.none] -= 1
 		1:
-			Game.mine_cost[Game.white] -= 1
+			Game.mine_cost[Game.MineralType.white] -= 1
 		2:
-			Game.mine_cost[Game.gold] -= 1
+			Game.mine_cost[Game.MineralType.gold] -= 1
 	
 func add_health():
 	Game.max_ap += 2

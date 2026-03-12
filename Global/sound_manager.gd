@@ -1,16 +1,13 @@
 extends Node
+# Manages all sound effects and background music playback
 
 @onready var sfx:Node = $SFX
 @onready var music:Node = $Music
 
-var sfx_dict :={}
-#var music_dict :={}
+var sfx_dict:Dictionary = {}  # Maps sound names to AudioStreamPlayer nodes
 
-var music_play_list:Array[AudioStreamPlayer]
-
-var is_background_playing:bool
-
-signal music_finished
+var music_play_list:Array[AudioStreamPlayer]  # Queue of music tracks to play
+var is_background_playing:bool  # Whether background music is currently playing
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

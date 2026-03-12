@@ -13,14 +13,13 @@ signal try_upgrade
 
 
 func analyze(item_data:Dictionary):
-	var desc  = item_data.get("describtion","") as String
+	var desc  = item_data.get("description","") as String
 	var requ = item_data.get("costs","") as Dictionary
-	print(1)
-	
+
 	if not (desc and requ):
-		push_error("asdffe")
-		print(desc)
-		print(requ)
+		push_error("Invalid upgrade data: missing description or costs")
+		print("Description: ", desc)
+		print("Costs: ", requ)
 		return
 	
 	

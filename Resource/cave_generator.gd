@@ -1,11 +1,13 @@
 extends Node
+# Procedural cave generation system with weighted mineral distribution
 
-var preserved:Dictionary
-var grid_size:Vector2i
+var preserved:Dictionary  # Pre-placed cells (entrance, exit, etc.)
+var grid_size:Vector2i  # Size of the cave grid
 var default_value:int = -1
 
-var weight_pairs:Dictionary
+var weight_pairs:Dictionary  # Mineral spawn weights for this level
 
+## Generates a cave grid with minerals distributed according to weights
 func generate_cave() -> Dictionary:
 	var cave_grid :={}
 	var weights := weight_normalized(weight_pairs)
@@ -31,6 +33,7 @@ func generate_cave() -> Dictionary:
 
 
 
+## Normalizes weight values so they sum to 1.0
 func weight_normalized(dict:Dictionary) -> Dictionary:
 	var result:=dict.duplicate()
 	var total_weight:float = 0
